@@ -28,6 +28,8 @@
 	</scm>
 	<properties>
 		<java.version>17</java.version>
+		<maven.compiler.source>1.8</maven.compiler.source> <!-- o 11 o 17 -->
+		<maven.compiler.target>1.8</maven.compiler.target> <!-- o 11 o 17 -->
 	</properties>
 	<dependencies>
 		<!-- Core Spring Boot dependency -->
