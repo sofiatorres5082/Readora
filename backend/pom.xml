@@ -70,21 +70,13 @@
 			<optional>true</optional>
 		</dependency>
 
-		<!-- Spring Boot DevTools: Auto-reload during development -->
+		<!-- Jackson (manejo de JSON) -->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-			<optional>true</optional>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-configuration-processor</artifactId>
-			<optional>true</optional>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.16.0</version>
 		</dependency>
 	</dependencies>
-
 
 
 	<build>
