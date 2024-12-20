@@ -1,32 +1,24 @@
 import React from "react";
-import { Home, BookOpen, Users, Search, X } from "lucide-react"; 
-
-const colors = {
-  background: "#F5F5F5",
-  primary: "#4A90E2",
-  text: "#333333",
-  light: "#F9F9F9",
-};
+import { Home, BookOpen, Users, Search, X } from "lucide-react";
 
 const SideMenu = ({ isOpen, onClose, onNavigate, activeTab }) => {
   const menuItems = [
     { icon: Home, label: "Inicio", tab: "home" },
     { icon: BookOpen, label: "Libros", tab: "books" },
     { icon: Users, label: "Autores", tab: "authors" },
-    { icon: Search, label: "Buscar", tab: "search" },
+    { icon: Search, label: "Estadísticas", tab: "stats" },
   ];
 
   return (
     <div
-      className={`fixed top-0 left-0 h-full w-64 shadow-lg transition-transform transform ${
+      className={`bg-white fixed top-0 left-0 h-full w-64 shadow-sm transition-transform transform ${
         isOpen ? "translate-x-0" : "-translate-x-full"
       }`}
-      style={{ backgroundColor: colors.light, zIndex: 50 }}
     >
       <div className="flex justify-between items-center p-4">
-        <h2 className="text-2xl font-bold" style={{ color: colors.primary }}>
-          Readora
-        </h2>
+        <div className="w-96">
+          <img src="/images/ReadoraLogo.png" alt="logo" />
+        </div>
         <button onClick={onClose}>
           <X size={24} />
         </button>
@@ -40,7 +32,10 @@ const SideMenu = ({ isOpen, onClose, onNavigate, activeTab }) => {
               activeTab === tab ? "bg-gray-100" : ""
             }`}
           >
-            <Icon size={20} className="mr-4" style={{ color: colors.primary }} />
+            <Icon
+              size={20}
+              className="mr-4 text-[#927570]"
+            />
             <span>{label}</span>
           </button>
         ))}

@@ -1,10 +1,10 @@
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LandingPage from "./pages/LandingPage";
 import HomePage from "./pages/HomePage";
 import BooksPage from "./pages/BooksPage";
 import AuthorsPage from "./pages/AuthorsPage";
-import SearchPage from "./pages/SearchPage";
+import StatsPage from "./pages/StatsPage";
 import SideMenu from "./components/SideMenu";
 import "./App.css";
 
@@ -15,6 +15,11 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  useEffect(() => {
+    const path = location.pathname.split("/")[1] || "home"; 
+    setActiveTab(path);
+  }, [location.pathname]); 
+
   const handleStart = () => {
     navigate("/home");
   };
@@ -22,7 +27,7 @@ function App() {
   const showSideMenu = location.pathname !== "/";
 
   return (
-    <div className="min-h-screen flex">
+    <div className="min-h-screen flex overflow-hidden">
       {showSideMenu && (
         <SideMenu
           isOpen={isSideMenuOpen}
@@ -57,7 +62,7 @@ function App() {
             <Route path="/home" element={<HomePage />} />
             <Route path="/books" element={<BooksPage />} />
             <Route path="/authors" element={<AuthorsPage />} />
-            <Route path="/search" element={<SearchPage />} />
+            <Route path="/stats" element={<StatsPage />} />
           </Routes>
         </main>
       </div>

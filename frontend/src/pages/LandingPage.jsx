@@ -1,37 +1,21 @@
-import React from 'react';
-
-const colors = {
-  background: '#F5F5F5',
-  primary: '#4A90E2',
-  secondary: '#7ED7C1',
-  text: '#333333',
-  light: '#F9F9F9'
-};
+import React from "react";
 
 const LandingPage = ({ onStart }) => (
-  <div 
-    className="flex flex-col justify-center items-center min-h-screen"
-    style={{ backgroundColor: colors.background }}
-  >
-    <h1 
-      className="text-5xl font-bold mb-4"
-      style={{ color: colors.primary }}
-    >
-      Readora
-    </h1>
-    <p 
-      className="text-xl mb-8 text-center px-4"
-      style={{ color: colors.text }}
-    >
-      Descubre tu próxima aventura literaria
+  <div className="min-h-screen bg-[url('/images/ReadoraBackground.png')] bg-cover bg-center bg-fixed flex flex-col overflow-hidden justify-center items-center">
+    {/* Logo Readora */}
+    <div className="w-96">
+      <img src="/images/ReadoraLogo.png" alt="logo" />
+    </div>
+
+    {/* Subtítulo */}
+    <p className="font-pedagogique text-[#927570] text-lg mb-8 text-center px-4 ">
+      Explore y guarde sus libros favoritos
     </p>
-    <button 
-      onClick={onStart} 
-      className="px-6 py-3 rounded-full shadow-lg transform transition-all hover:scale-105"
-      style={{ 
-        backgroundColor: colors.primary, 
-        color: 'white' 
-      }}
+
+    {/* Botón explorar */}
+    <button
+      onClick={onStart}
+      className="bg-[#f9ede5] font-pedagogique text-[#927570] text-base border-4 border-[#927570] px-6 py-2 rounded-full transform transition-all scale-up-center"
     >
       Explorar
     </button>
