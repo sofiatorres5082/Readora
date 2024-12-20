@@ -1,14 +1,19 @@
 import React from "react";
 
 const BookCard = ({ book }) => {
-  const authorName = book.author?.name || "Desconocido"; 
+  const authorName = book.author?.name || "Desconocido";
   const language = book.language || "No disponible";
   const downloadCount = book.downloadCount || 0;
 
   return (
-    <div className="p-4 border-4 border-[#927570] rounded-2xl bg-white">
-      <h3 className="font-bold text-lg mb-2">{book.title}</h3>
-      <p className="text-sm text-gray-700 mb-1">
+    <div className="flex flex-col justify-between gap-2 p-4 border-2 border-[#927570] rounded-2xl bg-white">
+      <h3
+        className="font-pedagogique text-center text-lg mb-2 truncate w-full"
+        title={book.title} 
+      >
+        {book.title}
+      </h3>
+      <p className="text-sm text-gray-500">
         <strong>Autor:</strong> {authorName}
       </p>
       <p className="text-sm text-gray-500">
@@ -17,6 +22,9 @@ const BookCard = ({ book }) => {
       <p className="text-sm text-gray-500">
         <strong>Descargas:</strong> {downloadCount}
       </p>
+      <button className="mt-4 px-4 py-2 bg-[#e08da6] text-white rounded-full hover:bg-[#a7586f] transition font-pedagogique text-sm">
+        Ver detalles
+      </button>
     </div>
   );
 };
