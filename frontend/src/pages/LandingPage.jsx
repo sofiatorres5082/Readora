@@ -15,7 +15,7 @@ const LandingPage = ({ onStart }) => (
     {/* Botón explorar */}
     <button
       onClick={onStart}
-      className="bg-[#f9ede5] font-pedagogique text-[#927570] text-base border-4 border-[#927570] px-6 py-2 rounded-full transform transition-all scale-up-center"
+      className="bg-[#f9ede5] font-pedagogique text-[#927570] text-base border-4 border-[#927570] px-6 py-2 rounded-full transform transition-all hover:scale-110"
     >
       Explorar
     </button>
