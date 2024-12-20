@@ -1,8 +1,11 @@
 package com.readora.Readora.controller;
 
+import com.readora.Readora.dto.BookDTO;
 import com.readora.Readora.model.Book;
 import com.readora.Readora.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,27 +21,33 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    // Endpoint para buscar un libro por título desde la API y guardarlo en la base de datos
+    // Endpoint para buscar un libro por título
     @GetMapping("/search")
-    public Book searchBookByTitle(@RequestParam String title) {
-        return bookService.searchBookByTitle(title);
+    public List<BookDTO> searchBookByTitle(@RequestParam String title) {
+        return bookService.searchBooksByTitle(title);
     }
 
-    // Endpoint para obtener todos los libros guardados
+    // Endpoint para guardar un libro
+    @PostMapping("/save")
+    public ResponseEntity<Book> saveBook(@RequestBody BookDTO bookDTO) {
+        return ResponseEntity.ok(bookService.saveSelectedBook(bookDTO));
+    }
+
+    // Endpoint para obtener todos los libros
     @GetMapping
     public List<Book> getAllBooks() {
         return bookService.getAllBooks();
     }
 
-    // Endpoint para filtrar libros por idioma
+    // Endpoint para obtener libros por idioma
     @GetMapping("/language")
     public List<Book> getBooksByLanguage(@RequestParam String language) {
         return bookService.getBooksByLanguage(language);
     }
 
-    // Endpoint para obtener libros ya guardados por título
+    // Endpoint para obtener libros por título
     @GetMapping("/title")
     public List<Book> getBooksByTitle(@RequestParam String title) {
-        return bookService.getBooksByTitle(title); // Se cambió a este método
+        return bookService.getBooksByTitle(title);
     }
 }

@@ -4,9 +4,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @SpringBootApplication
 public class ReadoraApplication implements CommandLineRunner {
+
+    private static final Logger logger = LoggerFactory.getLogger(ReadoraApplication.class);
 
     @Value("${spring.datasource.url}")
     private String dbUrl;
@@ -17,6 +21,7 @@ public class ReadoraApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("Database URL loaded: " + dbUrl);
+        logger.info("Database URL loaded: {}", dbUrl);
     }
 }
+

@@ -17,14 +17,6 @@ public class AuthorService {
         this.authorRepository = authorRepository;
     }
 
-    public List<Author> searchAuthorByName(String name) {
-        return authorRepository.findByNameContaining(name);
-    }
-
-    public List<Author> getAuthorsByLivingInYear(Integer year) {
-        return authorRepository.findByBirthYearLessThanEqualAndDeathYearGreaterThanEqual(year, year);
-    }
-
     public List<Author> getAllAuthors() {
         return authorRepository.findAll();
     }

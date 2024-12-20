@@ -18,18 +18,4 @@ public class AuthorController {
         this.authorService = authorService;
     }
 
-    @GetMapping("/search")
-    public List<Author> searchAuthorByName(@RequestParam String name) {
-        return authorService.searchAuthorByName(name);
-    }
-
-    @GetMapping
-    public List<Author> getAllAuthors() {
-        return authorService.getAllAuthors();
-    }
-
-    @GetMapping("/living")
-    public List<Author> getAuthorsAliveInYear(@RequestParam Integer year) {
-        return authorService.getAuthorsByLivingInYear(year);
-    }
 }
