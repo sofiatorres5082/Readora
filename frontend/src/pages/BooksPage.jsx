@@ -41,10 +41,10 @@ const LanguageFilter = ({ filterLanguage, setFilterLanguage }) => {
   );
 };
 
-const BooksPage = () => {
+const BooksPage = ({ setIsLoading }) => {
   const [results, setResults] = useState([]);
   const [savedBooks, setSavedBooks] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true); // Inicializar como true para mostrar la carga
   const [error, setError] = useState(null);
   const [selectedBook, setSelectedBook] = useState(null);
   const [isClosing, setIsClosing] = useState(false);
@@ -55,14 +55,18 @@ const BooksPage = () => {
       try {
         const books = await getAllBooks();
         setSavedBooks(books);
+        setLoading(false); 
+        setIsLoading(false); 
       } catch (err) {
         console.error("Error al obtener los libros guardados:", err);
         setError("No se pudieron cargar los libros guardados.");
+        setLoading(false);
+        setIsLoading(false); 
       }
     };
 
     fetchSavedBooks();
-  }, []);
+  }, [setIsLoading]);
 
   const handleSelectBook = useCallback(
     async (book) => {
@@ -114,6 +118,8 @@ const BooksPage = () => {
   return (
     <div className="p-5">
       <h1 className="text-center text-2xl font-bold mb-5">Buscar libros</h1>
+
+      {/* Barra de búsqueda */}
       <SearchBar
         setResults={setResults}
         setLoading={setLoading}
