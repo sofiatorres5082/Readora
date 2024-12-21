@@ -3,8 +3,29 @@
 @tailwind utilities;
 
 body {
-    @apply bg-[#f8ceda]
+    @apply bg-[#E6CDC8]
 }
+
+/* Custom Scrollbar */
+
+::-webkit-scrollbar {
+  width: 8px; 
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1; 
+}
+
 
 /* FONTS */
 
