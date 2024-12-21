@@ -3,6 +3,7 @@ package com.readora.Readora.service;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.readora.Readora.dto.AuthorDTO;
 import com.readora.Readora.dto.BookDTO;
+import com.readora.Readora.dto.BookStatisticsDTO;
 import com.readora.Readora.model.Author;
 import com.readora.Readora.model.Book;
 import com.readora.Readora.repository.AuthorRepository;
@@ -133,5 +134,20 @@ public class BookService {
     // Obtener libros por título.
     public List<Book> getBooksByTitle(String title) {
         return bookRepository.findByTitleContainingIgnoreCase(title);
+    }
+
+    // Método para obtener estadísticas de libros por idioma
+    public BookStatisticsDTO getBookStatisticsByLanguage(String language) {
+        List<Book> books = bookRepository.findByLanguage(language);
+
+        long totalBooks = books.size();
+        long totalDownloads = books.stream().mapToLong(Book::getDownloadCount).sum();
+
+        BookStatisticsDTO statistics = new BookStatisticsDTO();
+        statistics.setLanguage(language);
+        statistics.setTotalBooks(totalBooks);
+        statistics.setTotalDownloads(totalDownloads);
+
+        return statistics;
     }
 }

@@ -1,6 +1,7 @@
 package com.readora.Readora.controller;
 
 import com.readora.Readora.dto.BookDTO;
+import com.readora.Readora.dto.BookStatisticsDTO;
 import com.readora.Readora.model.Book;
 import com.readora.Readora.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,5 +50,12 @@ public class BookController {
     @GetMapping("/title")
     public List<Book> getBooksByTitle(@RequestParam String title) {
         return bookService.getBooksByTitle(title);
+    }
+
+    // Endpoint para obtener estadísticas de libros por idioma
+    @GetMapping("/statistics")
+    public ResponseEntity<BookStatisticsDTO> getBookStatistics(@RequestParam String language) {
+        BookStatisticsDTO statistics = bookService.getBookStatisticsByLanguage(language);
+        return ResponseEntity.ok(statistics);
     }
 }

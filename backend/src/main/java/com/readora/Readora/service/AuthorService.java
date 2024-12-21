@@ -20,4 +20,17 @@ public class AuthorService {
     public List<Author> getAllAuthors() {
         return authorRepository.findAll();
     }
+
+    public List<Author> getLivingAuthorsInYear(int year) {
+        int currentYear = java.time.Year.now().getValue();
+
+        if (year < 0) {
+            throw new IllegalArgumentException("El año no puede ser negativo");
+        }
+        if (year > currentYear) {
+            throw new IllegalArgumentException("El año no puede ser mayor al actual");
+        }
+
+        return authorRepository.findLivingAuthorsInYear(year);
+    }
 }
