@@ -1,7 +1,6 @@
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import LandingPage from "./pages/LandingPage";
-import HomePage from "./pages/HomePage";
 import BooksPage from "./pages/BooksPage";
 import AuthorsPage from "./pages/AuthorsPage";
 import StatsPage from "./pages/StatsPage";
@@ -59,10 +58,9 @@ function App() {
         <main className={showSideMenu ? "p-4" : ""}>
           <Routes>
             <Route path="/" element={<LandingPage onStart={handleStart} />} />
-            <Route path="/home" element={<HomePage />} />
+            <Route path="/stats" element={<StatsPage />} />
             <Route path="/books" element={<BooksPage />} />
             <Route path="/authors" element={<AuthorsPage />} />
-            <Route path="/stats" element={<StatsPage />} />
           </Routes>
         </main>
       </div>

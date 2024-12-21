@@ -3,10 +3,9 @@ import { Home, BookOpen, Users, Search, X } from "lucide-react";
 
 const SideMenu = ({ isOpen, onClose, onNavigate, activeTab }) => {
   const menuItems = [
-    { icon: Home, label: "Inicio", tab: "home" },
+    { icon: Home, label: "Estadísticas", tab: "stats" },
     { icon: BookOpen, label: "Libros", tab: "books" },
     { icon: Users, label: "Autores", tab: "authors" },
-    { icon: Search, label: "Estadísticas", tab: "stats" },
   ];
 
   return (
