@@ -62,7 +62,18 @@ const StatsPage = () => {
       {statistics && (
         <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Tarjeta: Total de libros */}
-          <div className="border-2 border-[#6b5758] bg-gradient-to-t from-[#ffcccc] to-[#ff99b1] p-6 rounded-lg flex items-center gap-4">
+          <div className="border-2 border-[#6b5758] bg-gradient-to-t from-[#ffcccc] to-[#ff99b1] p-6 rounded-lg flex items-center gap-4 relative">
+            {/* Estrellas decorativas */}
+            <img
+              src="/images/star1.png"
+              alt="Star 1"
+              className="absolute top-[-10px] left-[-10px] w-7 h-7 transform rotate-[30deg] z-10"
+            />
+            <img
+              src="/images/star1.png"
+              alt="Star 2"
+              className="absolute top-[55px] right-[-10px] w-6 h-6 transform rotate-[-30deg] z-10"
+            />
             <div className="text-[#52413f]">
               <Book size={36} />
             </div>
@@ -77,7 +88,18 @@ const StatsPage = () => {
           </div>
 
           {/* Tarjeta: Total de descargas */}
-          <div className="border-2 border-[#6b5758] bg-gradient-to-t from-[#ffcccc] to-[#ff99b1] p-6 rounded-lg flex items-center gap-4">
+          <div className="border-2 border-[#6b5758] bg-gradient-to-t from-[#ffcccc] to-[#ff99b1] p-6 rounded-lg flex items-center gap-4 relative">
+            {/* Estrellas decorativas */}
+            <img
+              src="/images/star1.png"
+              alt="Star 1"
+              className="absolute top-[15px] left-[-10px] w-7 h-7 transform rotate-[45deg] z-10"
+            />
+            <img
+              src="/images/star2.png"
+              alt="Star 2"
+              className="absolute top-[45px] right-[-10px] w-7 h-7 z-10"
+            />
             <div className="text-[#52413f]">
               <Download size={36} />
             </div>

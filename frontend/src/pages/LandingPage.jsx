@@ -1,7 +1,25 @@
 import React from "react";
 
 const LandingPage = ({ onStart }) => (
-  <div className="min-h-screen bg-[url('/images/ReadoraBackground.png')] bg-cover bg-center bg-fixed flex flex-col overflow-hidden justify-center items-center">
+  <div className="min-h-screen bg-[url('/images/ReadoraBackground.png')] bg-cover bg-center bg-fixed flex flex-col overflow-hidden justify-center items-center relative">
+    {/* Estrella de decoración */}
+    <img
+      src="/images/star1.png"
+      alt="Star 1"
+      className="absolute top-[30%] left-[18%] w-10 h-10 z-10 transform rotate-[45deg]"
+    />
+    <img
+      src="/images/star1.png"
+      alt="Star 2"
+      className="absolute top-[20%] right-[25%] w-8 h-8 z-10 transform rotate-[-45deg]"
+    />
+     <img
+      src="/images/star1.png"
+      alt="Star 2"
+      className="absolute top-[65%] right-[18%] w-7 h-7 z-10 transform rotate-[-45deg]"
+    />
+
+
     {/* Logo Readora */}
     <div className="w-96">
       <img src="/images/ReadoraLogo.png" alt="logo" />

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-[#e6cdc8];
+  @apply bg-[#efd4ce];
 }
 
 /* Custom Scrollbar */

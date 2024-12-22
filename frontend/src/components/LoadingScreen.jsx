@@ -2,7 +2,7 @@ import React from 'react';
 
 const LoadingScreen = () => {
   return (
-    <div className="fixed top-0 left-0 w-full h-full bg-[#f7d6e0] flex justify-center items-center z-50">
+    <div className="fixed top-0 left-0 w-full h-full bg-[#efd4ce] flex justify-center items-center z-50">
       <img
         src="/images/ReadoraIcon.png" 
         alt="loading"
