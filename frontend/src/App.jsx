@@ -2,6 +2,7 @@ import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect, useCallback, lazy, Suspense } from "react";
 import SideMenu from "./components/SideMenu";
 import LoadingScreen from "./components/LoadingScreen";
+import { Menu, ArrowLeft } from "lucide-react";
 
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 const BooksPage = lazy(() => import("./pages/BooksPage"));
@@ -42,12 +43,12 @@ function App() {
   const showSideMenu = location.pathname !== "/";
 
   return (
-    <div className="min-h-screen flex overflow-hidden">
+ <div className="min-h-screen flex overflow-hidden">
       {isLoading && <LoadingScreen />}
       {showSideMenu && (
         <SideMenu
           isOpen={isSideMenuOpen}
-          onClose={() => setIsSideMenuOpen(false)}
+          onToggle={() => setIsSideMenuOpen(!isSideMenuOpen)}
           onNavigate={handleNavigate}
           activeTab={activeTab}
         />
@@ -58,16 +59,16 @@ function App() {
           showSideMenu && isSideMenuOpen ? "ml-64" : "ml-0"
         }`}
       >
-        {showSideMenu && (
-          <header className="p-4 flex items-center">
-            <button onClick={() => setIsSideMenuOpen(true)} className="mr-4">
-              ☰
+        <header className="p-4 flex items-center">
+          {showSideMenu && (
+            <button
+              onClick={() => setIsSideMenuOpen(!isSideMenuOpen)}
+              className="mr-4 p-2 bg-[#e08da6] hover:bg-[#c5738b] text-white rounded-full transition duration-200"
+            >
+              {isSideMenuOpen ? <ArrowLeft size={24} /> : <Menu size={24} />}
             </button>
-            <h1 className="text-xl font-bold">
-              {activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}
-            </h1>
-          </header>
-        )}
+          )}
+        </header>
 
         <main className={showSideMenu ? "p-4" : ""}>
           <Suspense fallback={<LoadingScreen />}>

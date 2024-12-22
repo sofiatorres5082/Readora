@@ -1,7 +1,7 @@
 import React from "react";
-import { Home, BookOpen, Users, Search, X } from "lucide-react";
+import { Home, BookOpen, Users } from "lucide-react";
 
-const SideMenu = ({ isOpen, onClose, onNavigate, activeTab }) => {
+const SideMenu = ({ isOpen, onToggle, onNavigate, activeTab }) => {
   const menuItems = [
     { icon: Home, label: "Estadísticas", tab: "stats" },
     { icon: BookOpen, label: "Libros", tab: "books" },
@@ -10,7 +10,7 @@ const SideMenu = ({ isOpen, onClose, onNavigate, activeTab }) => {
 
   return (
     <div
-      className={`bg-white fixed top-0 left-0 h-full w-64 shadow-sm transition-transform transform ${
+      className={`bg-white fixed top-0 left-0 h-full w-64 transition-transform transform ${
         isOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >
@@ -18,9 +18,6 @@ const SideMenu = ({ isOpen, onClose, onNavigate, activeTab }) => {
         <div className="w-96">
           <img src="/images/ReadoraLogo.png" alt="logo" />
         </div>
-        <button onClick={onClose}>
-          <X size={24} />
-        </button>
       </div>
       <nav className="mt-8">
         {menuItems.map(({ icon: Icon, label, tab }) => (
@@ -31,11 +28,10 @@ const SideMenu = ({ isOpen, onClose, onNavigate, activeTab }) => {
               activeTab === tab ? "bg-gray-100" : ""
             }`}
           >
-            <Icon
-              size={20}
-              className="mr-4 text-[#927570]"
-            />
-            <span>{label}</span>
+            <Icon size={20} className="mr-4 text-[#927570]" />
+            <span className="font-nunito font-semibold text-base text-[#443734]">
+              {label}
+            </span>
           </button>
         ))}
       </nav>

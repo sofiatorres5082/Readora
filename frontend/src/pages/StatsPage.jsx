@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { getBookStatistics } from "../services/stats";
+import { Globe, ChevronDown, Book, Download } from "lucide-react";
 
 const StatsPage = () => {
   const [statistics, setStatistics] = useState(null);
-  const [language, setLanguage] = useState("es"); 
+  const [language, setLanguage] = useState("es");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -25,29 +26,70 @@ const StatsPage = () => {
 
   return (
     <div className="p-4">
-      <h2>Estadísticas de Libros</h2>
+      <div className="flex justify-center">
+        <h1 className="border-2 border-[#6b5758] font-pedagogique text-white text-center text-base font-medium mb-5 bg-[#ee99b1] rounded-full px-4 py-1.5 inline-block">
+          Estadísticas
+        </h1>
+      </div>
 
-      <div>
-        <label htmlFor="language">Idioma: </label>
-        <select
-          id="language"
-          value={language}
-          onChange={(e) => setLanguage(e.target.value)}
-        >
-          <option value="es">Español</option>
-          <option value="en">Inglés</option>
-          <option value="fr">Francés</option>
-          <option value="zh">Chino</option>
-        </select>
+      <div className="flex items-center gap-3 my-6 max-w-xs">
+        <div className="relative w-full">
+          <div className="absolute left-3 top-1/2 -translate-y-1/2 text-[#52413f]">
+            <Globe size={18} />
+          </div>
+          <select
+            id="language"
+            value={language}
+            onChange={(e) => setLanguage(e.target.value)}
+            className="w-full pl-10 pr-10 py-2.5 appearance-none bg-white border-2 border-[#52413f] 
+                     rounded-xl focus:outline-none
+                     transition-all duration-200 text-[#52413f] font-nunito font-semibold cursor-pointer"
+          >
+            <option value="es">Español</option>
+            <option value="en">Inglés</option>
+            <option value="fr">Francés</option>
+            <option value="zh">Chino</option>
+          </select>
+          <div className="absolute right-3 top-1/2 -translate-y-1/2 text-[#52413f] pointer-events-none">
+            <ChevronDown size={18} />
+          </div>
+        </div>
       </div>
 
       {loading && <p>Cargando...</p>}
       {error && <p>{error}</p>}
 
       {statistics && (
-        <div className="mt-4">
-          <p><strong>Total de libros:</strong> {statistics.totalBooks}</p>
-          <p><strong>Total de descargas:</strong> {statistics.totalDownloads}</p>
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Tarjeta: Total de libros */}
+          <div className="border-2 border-[#6b5758] bg-gradient-to-t from-[#ffcccc] to-[#ff99b1] p-6 rounded-lg flex items-center gap-4">
+            <div className="text-[#52413f]">
+              <Book size={36} />
+            </div>
+            <div>
+              <p className="text-sm text-[#52413f] font-pedagogique">
+                Total de libros
+              </p>
+              <p className="text-2xl font-bold text-[#52413f]">
+                {statistics.totalBooks.toLocaleString()}
+              </p>
+            </div>
+          </div>
+
+          {/* Tarjeta: Total de descargas */}
+          <div className="border-2 border-[#6b5758] bg-gradient-to-t from-[#ffcccc] to-[#ff99b1] p-6 rounded-lg flex items-center gap-4">
+            <div className="text-[#52413f]">
+              <Download size={36} />
+            </div>
+            <div>
+              <p className="text-sm text-[#52413f] font-pedagogique">
+                Total de descargas
+              </p>
+              <p className="text-2xl font-bold text-[#52413f]">
+                {statistics.totalDownloads.toLocaleString()}
+              </p>
+            </div>
+          </div>
         </div>
       )}
     </div>
