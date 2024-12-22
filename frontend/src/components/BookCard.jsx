@@ -6,20 +6,20 @@ const BookCard = ({ book, onDetailsClick }) => {
   const downloadCount = book.downloadCount || 0;
 
   return (
-    <div className="flex flex-col justify-between gap-2 p-4 border-2 border-[#6b5758] rounded-2xl bg-white">
+    <div className="flex flex-col justify-between gap-2 p-4 border-2 border-[#6b5758] rounded-2xl bg-[#fffaf6]">
       <h3
-        className="font-pedagogique text-center text-lg mb-2 truncate w-full"
+        className="font-pedagogique text-center text-lg text-[#6b5758] mb-2 truncate w-full"
         title={book.title}
       >
         {book.title}
       </h3>
-      <p className="text-sm text-gray-500">
+      <p className="font-nunito text-sm text-gray-700">
         <strong>Autor:</strong> {authorName}
       </p>
-      <p className="text-sm text-gray-500">
+      <p className="font-nunito text-sm text-gray-700">
         <strong>Idioma:</strong> {language}
       </p>
-      <p className="text-sm text-gray-500">
+      <p className="font-nunito text-sm text-gray-700">
         <strong>Descargas:</strong> {downloadCount}
       </p>
       <button

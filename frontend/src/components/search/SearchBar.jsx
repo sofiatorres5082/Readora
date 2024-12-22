@@ -48,8 +48,8 @@ export const SearchBar = ({ setResults, setLoading, setError }) => {
 
   return (
     <div className="w-full flex flex-col relative">
-      <div className="w-full h-10 flex items-center bg-white rounded-xl px-6">
-        <FaSearch className="text-[#927570]" />
+      <div className="w-full h-10 flex items-center bg-white border-2 border-[#725a58] rounded-xl px-6">
+        <FaSearch className="text-[#e08da6]" />
         <input
           type="text"
           className="flex-grow ml-4 bg-transparent outline-none text-base"

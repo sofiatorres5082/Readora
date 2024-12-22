@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getAllAuthors, getLivingAuthorsInYear } from "../services/authors";
+import Card from "../components/Card";
 
 const AuthorsPage = () => {
   const [authors, setAuthors] = useState([]);
@@ -81,14 +82,16 @@ const AuthorsPage = () => {
 
   return (
     <div className="p-5 min-h-screen">
-      <h1 className="text-center text-3xl font-bold text-pink-700 mb-8">
-        Autores
-      </h1>
+      <div className="flex justify-center">
+        <h1 className="border-2 border-[#6b5758] font-pedagogique text-white text-center text-base font-medium mb-5 bg-[#ee99b1] rounded-full px-4 py-1.5 inline-block">
+          Autores
+        </h1>
+      </div>
 
       {/* Filtro por año */}
-      <div className="mb-8 bg-white shadow-md p-6 rounded-lg">
-        <h2 className="text-xl font-semibold text-pink-600 mb-3">
-          Filtrar Autores Vivos
+      <div className="mb-8 bg-white border-2 border-[#52413f] p-6 rounded-lg">
+        <h2 className="text-lg font-pedagogique text-[#52413f] mb-4">
+          Filtrar autores vivos
         </h2>
         <div className="flex items-center gap-3">
           <input
@@ -98,17 +101,17 @@ const AuthorsPage = () => {
             placeholder="Ingresa un año"
             min="0"
             max={new Date().getFullYear()}
-            className="p-2 border rounded w-1/3 focus:outline-none focus:ring-2 focus:ring-pink-300"
+            className="p-1.5 px-4 text-base font-nunito border rounded-full w-1/3 focus:outline-none"
           />
           <button
             onClick={handleFilterByYear}
-            className="bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-500 transition"
+            className="px-4 py-2 bg-[#e08da6] text-white rounded-full hover:bg-[#a7586f] transition font-pedagogique text-sm"
           >
             Filtrar
           </button>
           <button
             onClick={handleResetFilter}
-            className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-400 transition"
+            className="px-4 py-2 bg-[#7c7c7c] text-white rounded-full hover:bg-[#4d4d4d] transition font-pedagogique text-sm"
           >
             Resetear Filtro
           </button>
@@ -122,22 +125,21 @@ const AuthorsPage = () => {
       </div>
 
       {/* Lista de autores */}
-      <div>
-        <h2 className="text-xl font-semibold text-pink-600 mb-3">
+      <div className="flex flex-col gap-6">
+        <h2 className="font-vividly text-3xl text-[#52413f]">
           Lista de Autores
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {authors.map((author) => (
-            <div
-              key={author.id}
-              className="bg-white shadow-md p-4 rounded-lg flex flex-col items-center text-center"
-            >
-              <h3 className="text-lg font-bold text-pink-700">{author.name}</h3>
-              <p className="text-gray-500">
-                ({author.birthYear} - {author.deathYear || "Presente"})
-              </p>
-            </div>
-          ))}
+        {authors.map((author) => (
+          <Card
+            key={author.id}
+            title={author.name}
+            details={[
+              { label: "Año de Nacimiento", value: author.birthYear },
+              { label: "Año de Fallecimiento", value: author.deathYear || "Presente" },
+            ]}
+          />
+        ))}
         </div>
       </div>
     </div>

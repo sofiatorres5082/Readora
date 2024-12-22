@@ -3,17 +3,17 @@
 @tailwind utilities;
 
 body {
-    @apply bg-[#E6CDC8]
+  @apply bg-[#e6cdc8];
 }
 
 /* Custom Scrollbar */
 
 ::-webkit-scrollbar {
-  width: 8px; 
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: #f1f1f1;
   border-radius: 10px;
 }
 
@@ -23,9 +23,8 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a1a1a1; 
+  background: #a1a1a1;
 }
-
 
 /* FONTS */
 
@@ -42,6 +41,16 @@ body {
   font-weight: 400;
   font-style: normal;
 }
+
+@font-face {
+  font-family: "Nunito";
+  src: url("./assets/fonts/Nunito.ttf");
+}
+
+.font-nunito {
+  font-family: "Nunito", sans-serif;
+}
+
 
 .font-pedagogique {
   font-family: "Pedagogique", sans-serif;

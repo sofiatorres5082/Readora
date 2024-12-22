@@ -1,17 +1,19 @@
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
-import { useState, useEffect, useCallback } from "react";
-import LandingPage from "./pages/LandingPage";
-import BooksPage from "./pages/BooksPage";
-import AuthorsPage from "./pages/AuthorsPage";
-import StatsPage from "./pages/StatsPage";
+import { useState, useEffect, useCallback, lazy, Suspense } from "react";
 import SideMenu from "./components/SideMenu";
-import LoadingScreen from "./components/LoadingScreen"; // Importa el componente de carga
+import LoadingScreen from "./components/LoadingScreen";
+
+const LandingPage = lazy(() => import("./pages/LandingPage"));
+const BooksPage = lazy(() => import("./pages/BooksPage"));
+const AuthorsPage = lazy(() => import("./pages/AuthorsPage"));
+const StatsPage = lazy(() => import("./pages/StatsPage"));
+
 import "./App.css";
 
 function App() {
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("books");
-  const [isLoading, setIsLoading] = useState(false); // Establecer inicialmente a false
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -30,18 +32,18 @@ function App() {
   );
 
   const handleStart = useCallback(() => {
-    setIsLoading(true); // Activa la pantalla de carga cuando se presiona el botón "Empezar"
+    setIsLoading(true);
     setTimeout(() => {
-      setIsLoading(false); // Desactiva la pantalla de carga después de un corto tiempo
+      setIsLoading(false);
       navigate("/books");
-    }, 1500); // Simula la carga de la página por 1.5 segundos
+    }, 1500);
   }, [navigate]);
 
   const showSideMenu = location.pathname !== "/";
 
   return (
     <div className="min-h-screen flex overflow-hidden">
-      {isLoading && <LoadingScreen />} {/* Pantalla de carga solo cuando está en "isLoading" */}
+      {isLoading && <LoadingScreen />}
       {showSideMenu && (
         <SideMenu
           isOpen={isSideMenuOpen}
@@ -68,12 +70,14 @@ function App() {
         )}
 
         <main className={showSideMenu ? "p-4" : ""}>
-          <Routes>
-            <Route path="/" element={<LandingPage onStart={handleStart} />} />
-            <Route path="/stats" element={<StatsPage />} />
-            <Route path="/books" element={<BooksPage setIsLoading={setIsLoading} />} />
-            <Route path="/authors" element={<AuthorsPage />} />
-          </Routes>
+          <Suspense fallback={<LoadingScreen />}>
+            <Routes>
+              <Route path="/" element={<LandingPage onStart={handleStart} />} />
+              <Route path="/stats" element={<StatsPage />} />
+              <Route path="/books" element={<BooksPage />} />
+              <Route path="/authors" element={<AuthorsPage />} />
+            </Routes>
+          </Suspense>
         </main>
       </div>
     </div>
