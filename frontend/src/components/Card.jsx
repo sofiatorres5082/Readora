@@ -2,18 +2,20 @@ import React from "react";
 
 const Card = ({ title, details, onDetailsClick }) => {
   return (
-    <div className="flex flex-col justify-between gap-2 p-4 border-2 border-[#6b5758] rounded-2xl bg-[#fffaf6]">
+    <div className="flex flex-col justify-between gap-2 p-4 border-2 border-[#6b5758] rounded-2xl bg-[#fffaf6] w-70 h-52">
       <h3
         className="font-pedagogique text-center text-lg text-[#6b5758] mb-2 truncate w-full"
         title={title}
       >
         {title}
       </h3>
-      {details.map((detail, index) => (
-        <p key={index} className="font-nunito text-sm text-gray-700">
-          <strong>{detail.label}:</strong> {detail.value}
-        </p>
-      ))}
+      <div className="overflow-auto">
+        {details.map((detail, index) => (
+          <p key={index} className="font-nunito text-sm text-gray-700">
+            <strong>{detail.label}:</strong> {detail.value}
+          </p>
+        ))}
+      </div>
       {onDetailsClick && (
         <button
           onClick={onDetailsClick}

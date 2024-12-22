@@ -29,28 +29,80 @@ body {
 /* FONTS */
 
 @font-face {
-  font-family: "Pedagogique";
-  src: url("../assets/fonts/Pedagogique Medium.otf") format("opentype");
-  font-weight: 400;
+  font-family: 'Nunito';
+  src: url('assets/fonts/Nunito-ExtraLight.woff2') format('woff2'),
+      url('assets/fonts/Nunito-ExtraLight.woff') format('woff');
+  font-weight: 200;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-  font-family: "Vividly";
-  src: url("../assets/fonts/Vividly-Regular.ttf") format("truetype");
-  font-weight: 400;
+  font-family: 'Pedagogique';
+  src: url('assets/fonts/Pedagogique-Bold-Regular.woff2') format('woff2'),
+      url('assets/fonts/Pedagogique-Bold-Regular.woff') format('woff');
+  font-weight: bold;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-  font-family: "Nunito";
-  src: url("./assets/fonts/Nunito.ttf");
+  font-family: 'Nunito';
+  src: url('assets/fonts/Nunito-ExtraLight.woff2') format('woff2'),
+      url('assets/fonts/Nunito-ExtraLight.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pedagogique';
+  src: url('assets/fonts/Pedagogique-Bold-Regular.woff2') format('woff2'),
+      url('assets/fonts/Pedagogique-Bold-Regular.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pedagogique';
+  src: url('assets/fonts/Pedagogique-Medium-Regular.woff2') format('woff2'),
+      url('assets/fonts/Pedagogique-Medium-Regular.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pedagogique';
+  src: url('assets/fonts/Pedagogique-Medium-Regular.woff2') format('woff2'),
+      url('assets/fonts/Pedagogique-Medium-Regular.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Vividly';
+  src: url('assets/fonts/Vividly-Regular.woff2') format('woff2'),
+      url('assets/fonts/Vividly-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Vividly';
+  src: url('assets/fonts/Vividly-Regular.woff2') format('woff2'),
+      url('assets/fonts/Vividly-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 .font-nunito {
   font-family: "Nunito", sans-serif;
 }
-
 
 .font-pedagogique {
   font-family: "Pedagogique", sans-serif;

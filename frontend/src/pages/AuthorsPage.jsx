@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { getAllAuthors, getLivingAuthorsInYear } from "../services/authors";
+import { getBooksByAuthor } from "../services/books";
 import Card from "../components/Card";
+import Modal from "../components/Modal";
 
 const AuthorsPage = () => {
   const [authors, setAuthors] = useState([]);
@@ -9,6 +11,8 @@ const AuthorsPage = () => {
   const [error, setError] = useState(null);
   const [noResults, setNoResults] = useState(false);
   const [noResultsMessage, setNoResultsMessage] = useState("");
+  const [selectedAuthor, setSelectedAuthor] = useState(null);
+  const [authorBooks, setAuthorBooks] = useState([]);
 
   const currentYear = new Date().getFullYear();
 
@@ -21,6 +25,14 @@ const AuthorsPage = () => {
       } catch (err) {
         setError("Error al obtener los autores.");
       }
+    };
+    fetchAuthors();
+  }, []);
+
+  useEffect(() => {
+    const fetchAuthors = async () => {
+      const authorsData = await getAllAuthors();
+      setAuthors(authorsData);
     };
     fetchAuthors();
   }, []);
@@ -70,6 +82,17 @@ const AuthorsPage = () => {
       console.error("Error al filtrar autores:", err);
       setError(err.response?.data || "Error al filtrar autores vivos.");
       setAuthors([]);
+    }
+  };
+
+  const handleSelectAuthor = async (author) => {
+    setSelectedAuthor(author);
+    try {
+      const books = await getBooksByAuthor(author.id); // Llamada al backend
+      setAuthorBooks(books); // Guarda los libros en el estado
+    } catch (err) {
+      console.error("Error al obtener libros del autor:", err);
+      setAuthorBooks([]);
     }
   };
 
@@ -130,18 +153,45 @@ const AuthorsPage = () => {
           Lista de Autores
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {authors.map((author) => (
-          <Card
-            key={author.id}
-            title={author.name}
-            details={[
-              { label: "Año de Nacimiento", value: author.birthYear },
-              { label: "Año de Fallecimiento", value: author.deathYear || "Presente" },
-            ]}
-          />
-        ))}
+          {authors.map((author) => (
+            <Card
+              key={author.id}
+              title={author.name}
+              details={[
+                { label: "Año de Nacimiento", value: author.birthYear },
+                {
+                  label: "Año de Fallecimiento",
+                  value: author.deathYear || "Presente",
+                },
+              ]}
+              onDetailsClick={() => handleSelectAuthor(author)} // Seleccionar autor
+            />
+          ))}
         </div>
       </div>
+      {selectedAuthor && (
+        <Modal
+          title={selectedAuthor.name}
+          content={[
+            { label: "Año de Nacimiento", value: selectedAuthor.birthYear },
+            {
+              label: "Año de Fallecimiento",
+              value: selectedAuthor.deathYear || "Presente",
+            },
+            {
+              label: "Libros",
+              value:
+                authorBooks.length > 0
+                  ? authorBooks.map((book) => book.title).join(", ")
+                  : "Sin libros registrados",
+            },
+          ]}
+          onClose={() => {
+            setSelectedAuthor(null);
+            setAuthorBooks([]);
+          }}
+        />
+      )}
     </div>
   );
 };

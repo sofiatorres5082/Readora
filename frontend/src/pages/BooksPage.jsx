@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import BookCard from "../components/BookCard";
+
 import { SearchBar } from "../components/search/SearchBar";
 import { SearchResultList } from "../components/search/SearchResultList";
 import { saveSelectedBook, getAllBooks } from "../services/books";

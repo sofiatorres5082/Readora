@@ -27,4 +27,9 @@ export const getBooksByLanguage = async (language) => {
   return response.data;
 };
 
+export const getBooksByAuthor = async (authorId) => {
+  const response = await axios.get(`${BOOKS_URL}/author/${authorId}`);
+  return response.data;
+};
+
 
