@@ -135,8 +135,8 @@ const BooksPage = ({ setIsLoading }) => {
         isLoading={loading}
       />
 
-      {/* Filtro por idioma */}
-      {savedBooks.length > 0 && (
+    {/* Filtro por idioma */}
+    {savedBooks.length > 0 && (
         <div className="mt-5">
           <div className="flex items-center justify-between mb-4">
             <h2 className="font-vividly text-3xl text-[#52413f]">
@@ -149,7 +149,8 @@ const BooksPage = ({ setIsLoading }) => {
             />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {savedBooks.map((book) => (
+            {/* Muestra los libros filtrados */}
+            {filteredBooks.map((book) => (
               <Card
                 key={book.id}
                 title={book.title}
