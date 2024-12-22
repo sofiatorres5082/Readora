@@ -136,6 +136,11 @@ public class BookService {
         return bookRepository.findByTitleContainingIgnoreCase(title);
     }
 
+    // Obtener un libro por su autor.
+    public List<Book> getBooksByAuthorId(Long authorId) {
+        return bookRepository.findByAuthor_Id(authorId);
+    }
+
     // Método para obtener estadísticas de libros por idioma
     public BookStatisticsDTO getBookStatisticsByLanguage(String language) {
         List<Book> books = bookRepository.findByLanguage(language);
@@ -150,4 +155,6 @@ public class BookService {
 
         return statistics;
     }
+
+
 }

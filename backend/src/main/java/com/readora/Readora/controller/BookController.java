@@ -58,4 +58,10 @@ public class BookController {
         BookStatisticsDTO statistics = bookService.getBookStatisticsByLanguage(language);
         return ResponseEntity.ok(statistics);
     }
+
+    // Endpoint para obtener un libro por su autor
+    @GetMapping("/author/{authorId}")
+    public List<Book> getBooksByAuthor(@PathVariable Long authorId) {
+        return bookService.getBooksByAuthorId(authorId);
+    }
 }
