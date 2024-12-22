@@ -1,7 +1,7 @@
 import React from "react";
 import { Home, BookOpen, Users } from "lucide-react";
 
-const SideMenu = ({ isOpen, onToggle, onNavigate, activeTab }) => {
+const SideMenu = ({ isOpen, onNavigate, activeTab }) => {
   const menuItems = [
     { icon: Home, label: "Estadísticas", tab: "stats" },
     { icon: BookOpen, label: "Libros", tab: "books" },
