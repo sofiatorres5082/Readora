@@ -11,7 +11,7 @@ const Card = ({ title, details, onDetailsClick }) => {
       </h3>
       <div className="overflow-auto">
         {details.map((detail, index) => (
-          <p key={index} className="font-nunito text-sm text-gray-700">
+          <p key={index} className="font-nunito text-sm text-gray-700 font-semibold">
             <strong>{detail.label}:</strong> {detail.value}
           </p>
         ))}

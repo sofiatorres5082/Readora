@@ -6,7 +6,7 @@ const LoadingScreen = () => {
       <img
         src="/images/ReadoraIcon.png" 
         alt="loading"
-        className="w-28 mb-24 animate-rotate-center"
+        className="w-28 mb-24 animate-rotateCenter"
       />
     </div>
   );

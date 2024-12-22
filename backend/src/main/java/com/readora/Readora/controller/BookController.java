@@ -5,7 +5,6 @@ import com.readora.Readora.dto.BookStatisticsDTO;
 import com.readora.Readora.model.Book;
 import com.readora.Readora.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

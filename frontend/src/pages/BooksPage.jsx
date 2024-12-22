@@ -149,7 +149,6 @@ const BooksPage = ({ setIsLoading }) => {
             />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {/* Muestra los libros filtrados */}
             {filteredBooks.map((book) => (
               <Card
                 key={book.id}
@@ -174,7 +173,8 @@ const BooksPage = ({ setIsLoading }) => {
             { label: "Idioma", value: selectedBook.language || "No disponible" },
             { label: "Descargas", value: selectedBook.downloadCount || 0 },
           ]}
-          onClose={() => setSelectedBook(null)}
+          onClose={handleClose}
+          isClosing={isClosing}
         />
       )}
     </div>

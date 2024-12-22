@@ -13,6 +13,7 @@ const AuthorsPage = () => {
   const [noResultsMessage, setNoResultsMessage] = useState("");
   const [selectedAuthor, setSelectedAuthor] = useState(null);
   const [authorBooks, setAuthorBooks] = useState([]);
+  const [isClosing, setIsClosing] = useState(false);
 
   const currentYear = new Date().getFullYear();
 
@@ -25,14 +26,6 @@ const AuthorsPage = () => {
       } catch (err) {
         setError("Error al obtener los autores.");
       }
-    };
-    fetchAuthors();
-  }, []);
-
-  useEffect(() => {
-    const fetchAuthors = async () => {
-      const authorsData = await getAllAuthors();
-      setAuthors(authorsData);
     };
     fetchAuthors();
   }, []);
@@ -94,6 +87,18 @@ const AuthorsPage = () => {
       console.error("Error al obtener libros del autor:", err);
       setAuthorBooks([]);
     }
+  };
+
+  const closeModal = () => {
+    setSelectedAuthor(null);
+    setIsClosing(false);
+  };
+
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      closeModal();
+    }, 300); // Asegúrate de que este tiempo coincide con la duración de la animación CSS
   };
 
   const handleResetFilter = () => {
@@ -164,7 +169,7 @@ const AuthorsPage = () => {
                   value: author.deathYear || "Presente",
                 },
               ]}
-              onDetailsClick={() => handleSelectAuthor(author)} // Seleccionar autor
+              onDetailsClick={() => handleSelectAuthor(author)} 
             />
           ))}
         </div>
@@ -186,10 +191,8 @@ const AuthorsPage = () => {
                   : "Sin libros registrados",
             },
           ]}
-          onClose={() => {
-            setSelectedAuthor(null);
-            setAuthorBooks([]);
-          }}
+          onClose={handleClose}
+          isClosing={isClosing}
         />
       )}
     </div>

@@ -1,12 +1,20 @@
 import React from "react";
 
-const Modal = ({ title, content, onClose }) => {
+const Modal = ({ title, content, onClose, isClosing }) => {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg p-6 w-full max-w-md shadow-lg">
-        <h2 className="text-lg font-bold mb-4">{title}</h2>
+    <div
+      className={`fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 ${
+        isClosing ? "animate-fadeOut" : "animate-fadeIn"
+      }`}
+    >
+      <div
+        className={`bg-white rounded-lg p-6 w-full max-w-md border-4 border-[#6b5758] transform ${
+          isClosing ? "animate-zoomOut" : "animate-zoomCenter"
+        }`}
+      >
+        <h2 className="font-pedagogique text-center text-lg text-[#6b5758] mb-2">{title}</h2>
         {content.map((item, index) => (
-          <p key={index} className="mb-2">
+          <p key={index} className="font-nunito text-sm text-gray-700 font-semibold">
             <strong>{item.label}:</strong> {item.value}
           </p>
         ))}
