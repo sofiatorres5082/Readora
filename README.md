@@ -1,5 +1,6 @@
 # 🌟 **Readora** 🌟  
-Una aplicación web para explorar y gestionar libros digitales, utilizando la API de Gutendex. Readora combina un backend potente con una interfaz elegante para ofrecer una experiencia única a los amantes de la lectura.
+
+Una aplicación web para explorar y gestionar libros digitales, utilizando la API de Gutendex. 
 
 ---
 
@@ -79,6 +80,15 @@ Readora/
 
 ✨ **Interfaz del proyecto**  
 
-
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/6bdd6b82-03a5-446d-b445-a68f303a96f3" alt="LandingPage" width="45%"/>
+  <img src="https://github.com/user-attachments/assets/80a24569-aa91-4a9e-8810-b1bce1a6c2f4" alt="BooksPage" width="45%"/>
+  <img src="https://github.com/user-attachments/assets/58986034-921b-44a1-9a87-ffe879cd9f8c" alt="BooksSearch" width="45%"/>
+  <img src="https://github.com/user-attachments/assets/24b6a7c6-e139-4120-b90f-0a6a16d34fcc" alt="BooksFilter" width="45%"/>
+  <img src="https://github.com/user-attachments/assets/3e1c8eb6-b995-45ab-9fed-824f04006bc4" alt="BookDetail" width="45%"/>
+  <img src="https://github.com/user-attachments/assets/08ac397f-3386-408d-bc04-f9ad5df4f7b1" alt="AuthorsPage" width="45%"/>
+  <img src="https://github.com/user-attachments/assets/981b47ca-fb4a-4988-8f05-52c13aaec80c" alt="AuthorDetail" width="45%"/>
+  <img src="https://github.com/user-attachments/assets/8538d16f-22b5-48c4-a795-137ee62d8f8e" alt="Stats" width="45%"/>
+</p>
 
 ---
