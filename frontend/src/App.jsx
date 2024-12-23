@@ -7,6 +7,8 @@ const LandingPage = lazy(() => import("./pages/LandingPage"));
 const BooksPage = lazy(() => import("./pages/BooksPage"));
 const AuthorsPage = lazy(() => import("./pages/AuthorsPage"));
 const StatsPage = lazy(() => import("./pages/StatsPage"));
+const ErrorPage = lazy(() => import("./pages/ErrorPage"));
+
 
 import "./App.css";
 
@@ -34,6 +36,8 @@ function App() {
             <Route path="/books" element={<BooksPage />} />
             <Route path="/authors" element={<AuthorsPage />} />
           </Route>
+
+          <Route path="*" Component={ErrorPage} />
         </Routes>
       </Suspense>
     </div>

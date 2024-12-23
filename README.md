@@ -1,82 +1,84 @@
-# Readora
+# 🌟 **Readora** 🌟  
+Una aplicación web para explorar y gestionar libros digitales, utilizando la API de Gutendex. Readora combina un backend potente con una interfaz elegante para ofrecer una experiencia única a los amantes de la lectura.
 
+---
 
+## **Características principales** ✨
 
-[Inicio] - Breve introducción al catálogo.
-[Libros] - Búsqueda, guardado y detalle de libros.
-    - Libros almacenados.
-    - Filtro por idioma.
-[Autores] - Listado de autores y consulta de vivos por año.
-[Estadísticas] - Gráficos o datos sobre libros y autores.
+### 📖 **Sección de Libros**  
+- **Búsqueda de libros**: Encuentra libros por título a través de la API de Gutendex.  
+- **Biblioteca Personal**: Almacenamiento automático de libros consultados.  
+- **Filtrado por Idiomas**: Filtra los libros almacenados en español, inglés, francés y chino.  
+- **Detalles Completos**: Visualización detallada de la información de cada libro.  
 
+### 📊 **Sección de Estadísticas**  
+- **Distribución de idiomas**: Visualiza la cantidad de libros disponibles por idioma.  
+- **Popularidad por descargas**: Estadísticas sobre descargas totales por idioma.  
 
-☆ ───── **Estructura del proyecto** ───── ☆
-```bash 
+### ✍️ **Sección de Autores**  
+- **Filtro por año**: Encuentra autores vivos en un año específico.  
+- **Catálogo de autores**: Lista detallada con información sobre los autores almacenados.  
+- **Relación libros-autores**: Detalles completos de cada autor junto con los libros que escribieron.  
+
+---
+
+## **Tecnologías utilizadas** 🛠️  
+
+### **Backend**  
+| Herramienta       | Uso                            |  
+| ----------------- | ------------------------------ |  
+| **Java 17**       | Lenguaje principal.            |  
+| **PostgreSQL**    | Base de datos.                 |  
+| **Spring Boot**   | Framework de desarrollo.       |  
+| **JPA Hibernate** | Mapeo objeto-relacional.       |  
+| **Maven**         | Gestión de dependencias.       |  
+| **Jackson**       | Procesamiento de JSON.         |  
+
+### **Frontend**  
+| Herramienta          | Uso                   |  
+| -------------------- | --------------------- |  
+| **React**            | Biblioteca principal. |  
+| **Axios**            | Cliente HTTP.         |  
+| **Tailwind CSS**     | Estilos y diseño.     |  
+| **React Router DOM** | Enrutamiento.         |  
+
+---
+
+## **Estructura del proyecto** 📂  
+
+```bash
 Readora/
 ├── backend/
 │   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/
+│   │   │   │   ├── com.readora.Readora
+│   │   │   │   │   ├── config/
+│   │   │   │   │   ├── controller/
+│   │   │   │   │   ├── dto/
+│   │   │   │   │   ├── model/
+│   │   │   │   │   ├── repository/
+│   │   │   │   │   └── service/
+│   │   │   │   └── ReadoraApplication.java
+│   │   │   └── resources/
+│   │   │       └── application.properties
 │   └── pom.xml
-├── frontend/
-│   ├── src/
-│   └── package.json
-└──  README.md
+└── frontend/
+    ├── src/
+    │   ├── assets/
+    │   ├── components/
+    │   ├── pages/
+    │   └── services/
+    ├── .env
+    ├── package.json
+    └── tailwind.config.js
 ```
 
- ☆ ───── **Estructura del backend** ───── ☆
+---
+☆ ───── **Capturas de Pantalla** ───── ☆
 
-```bash 
-backend/
-│
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── com/
-│   │   │       └── readora/
-│   │   │           ├── config/              # Configuraciones generales (CORS, etc.)
-│   │   │           │      └── WebConfig.java
-│   │   │           ├── controller/          # Controladores de las rutas
-│   │   │           │      └── ApiController.java     
-│   │   │           ├── service/             # Lógica de negocio
-│   │   │           │      └── BookService.java
-│   │   │           ├── repository/          # Interacción con la base de datos
-│   │   │           │      └── BookRepository.java
-│   │   │           ├── model/               # Entidades JPA (Book, Author)
-│   │   │           │      ├── Book.java
-│   │   │           │      └── Author.java
-│   │   │           ├── dto/                 # Clases de transferencia de datos (opcional)
-│   │   │           │      └── BookDTO.java
-│   │   │           └── ReadoraApplication.java  # Clase principal de Spring Boot
-│   │   └── resources/
-│   │       ├── application.properties       # Configuración de la aplicación
-│   │       └── data.sql                     # Opcional: datos iniciales para la BD
-│   │
-├── pom.xml                                   # Dependencias y configuración del backend
-└── target/                                   # Carpeta generada al compilar el proyecto
-                             
-```
+✨ **Interfaz del proyecto**  
 
-☆ ───── **Estructura del frontend** ───── ☆
-```bash 
-frontend/
-│
-├── /public                # Archivos estáticos, favicon, index.html
-│   ├── favicon.ico
-│   └── index.html
-├── /src
-│   ├── /assets            # Archivos estáticos como imágenes y estilos CSS
-│   │   └── logo.svg
-│   ├── /components        # Componentes reutilizables (Navbar, Footer, etc.)
-│   │   ├── Navbar.jsx
-│   │   └── Footer.jsx
-│   ├── /pages             # Páginas principales (Home, Libros, Autores)
-│   │   ├── Home.jsx
-│   │   ├── Books.jsx
-│   │   └── Authors.jsx
-│   ├── /services          # Llamadas a la API con Axios
-│   │   └── api.js
-│   ├── App.jsx            # Componente raíz de la aplicación
-│   └── index.js           # Punto de entrada principal
-├── package.json           # Configuración del proyecto y dependencias
-├── tailwind.config.js     # Configuración de Tailwind CSS
-└── vite.config.js         # Configuración de Vite
-```
+
+
+---
