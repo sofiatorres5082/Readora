@@ -3,7 +3,7 @@ Una aplicación web para explorar y gestionar libros digitales, utilizando la AP
 
 ---
 
-## **Características principales** ✨
+## ☆ ───── **Características principales** ✨───── ☆
 
 ### 📖 **Sección de Libros**  
 - **Búsqueda de libros**: Encuentra libros por título a través de la API de Gutendex.  
@@ -22,7 +22,7 @@ Una aplicación web para explorar y gestionar libros digitales, utilizando la AP
 
 ---
 
-## **Tecnologías utilizadas** 🛠️  
+## ☆ ───── **Tecnologías utilizadas** 🛠️  ───── ☆
 
 ### **Backend**  
 | Herramienta       | Uso                            |  
@@ -44,7 +44,7 @@ Una aplicación web para explorar y gestionar libros digitales, utilizando la AP
 
 ---
 
-## **Estructura del proyecto** 📂  
+## ☆ ───── **Estructura del proyecto** 📂  ───── ☆
 
 ```bash
 Readora/
@@ -75,7 +75,7 @@ Readora/
 ```
 
 ---
-☆ ───── **Capturas de Pantalla** ───── ☆
+## ☆ ───── **Capturas de pantalla** ───── ☆
 
 ✨ **Interfaz del proyecto**  
 
