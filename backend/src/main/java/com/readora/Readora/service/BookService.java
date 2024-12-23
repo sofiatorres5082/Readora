@@ -8,7 +8,6 @@ import com.readora.Readora.model.Author;
 import com.readora.Readora.model.Book;
 import com.readora.Readora.repository.AuthorRepository;
 import com.readora.Readora.repository.BookRepository;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
