@@ -5,7 +5,7 @@ import { SearchResultList } from "../components/search/SearchResultList";
 import { saveSelectedBook, getAllBooks } from "../services/books";
 import Card from "../components/Card";
 import Modal from "../components/Modal";
-import { Globe, ChevronDown } from "lucide-react";
+import CustomSelect from "../components/CustomSelect";
 
 const LanguageFilter = ({ filterLanguage, setFilterLanguage }) => {
   const languages = [
@@ -16,29 +16,18 @@ const LanguageFilter = ({ filterLanguage, setFilterLanguage }) => {
     { code: "fr", label: "Francés" },
   ];
 
+  const options = languages.map((lang) => ({
+    value: lang.code,
+    label: lang.label,
+  }));
+
   return (
     <div className="flex items-center gap-3 my-6 max-w-xs">
-      <div className="relative w-full">
-        <div className="absolute left-3 top-1/2 -translate-y-1/2 text-[#52413f]">
-          <Globe size={18} />
-        </div>
-        <select
-          value={filterLanguage}
-          onChange={(e) => setFilterLanguage(e.target.value)}
-          className="w-full pl-10 pr-10 py-2.5 appearance-none bg-white border-2 border-[#52413f] 
-                     rounded-xl focus:outline-none
-                     transition-all duration-200 text-[#52413f] font-nunito font-semibold cursor-pointer"
-        >
-          {languages.map((lang) => (
-            <option key={lang.code} value={lang.code}>
-              {lang.label}
-            </option>
-          ))}
-        </select>
-        <div className="absolute right-3 top-1/2 -translate-y-1/2 text-[#52413f] pointer-events-none">
-          <ChevronDown size={18} />
-        </div>
-      </div>
+      <CustomSelect
+        options={options}
+        value={filterLanguage}
+        onChange={setFilterLanguage}
+      />
     </div>
   );
 };
@@ -46,7 +35,7 @@ const LanguageFilter = ({ filterLanguage, setFilterLanguage }) => {
 const BooksPage = ({ setIsLoading }) => {
   const [results, setResults] = useState([]);
   const [savedBooks, setSavedBooks] = useState([]);
-  const [loading, setLoading] = useState(true); // Inicializar como true para mostrar la carga
+  const [loading, setLoading] = useState(true); 
   const [error, setError] = useState(null);
   const [selectedBook, setSelectedBook] = useState(null);
   const [isClosing, setIsClosing] = useState(false);
@@ -135,8 +124,8 @@ const BooksPage = ({ setIsLoading }) => {
         isLoading={loading}
       />
 
-    {/* Filtro por idioma */}
-    {savedBooks.length > 0 && (
+      {/* Filtro por idioma */}
+      {savedBooks.length > 0 && (
         <div className="mt-5">
           <div className="flex items-center justify-between mb-4">
             <h2 className="font-vividly text-3xl text-[#52413f]">
@@ -169,8 +158,14 @@ const BooksPage = ({ setIsLoading }) => {
         <Modal
           title={selectedBook.title}
           content={[
-            { label: "Autor", value: selectedBook.author?.name || "Desconocido" },
-            { label: "Idioma", value: selectedBook.language || "No disponible" },
+            {
+              label: "Autor",
+              value: selectedBook.author?.name || "Desconocido",
+            },
+            {
+              label: "Idioma",
+              value: selectedBook.language || "No disponible",
+            },
             { label: "Descargas", value: selectedBook.downloadCount || 0 },
           ]}
           onClose={handleClose}

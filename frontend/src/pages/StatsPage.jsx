@@ -1,12 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { getBookStatistics } from "../services/stats";
-import { Globe, ChevronDown, Book, Download } from "lucide-react";
+import { Book, Download } from "lucide-react";
+import CustomSelect from "../components/CustomSelect";
 
 const StatsPage = () => {
   const [statistics, setStatistics] = useState(null);
   const [language, setLanguage] = useState("es");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  const languages = [
+    { value: "es", label: "Español" },
+    { value: "en", label: "Inglés" },
+    { value: "fr", label: "Francés" },
+    { value: "zh", label: "Chino" },
+  ];
 
   useEffect(() => {
     const fetchStatistics = async () => {
@@ -33,27 +41,11 @@ const StatsPage = () => {
       </div>
 
       <div className="flex items-center gap-3 my-6 max-w-xs">
-        <div className="relative w-full">
-          <div className="absolute left-3 top-1/2 -translate-y-1/2 text-[#52413f]">
-            <Globe size={18} />
-          </div>
-          <select
-            id="language"
-            value={language}
-            onChange={(e) => setLanguage(e.target.value)}
-            className="w-full pl-10 pr-10 py-2.5 appearance-none bg-white border-2 border-[#52413f] 
-                     rounded-xl focus:outline-none
-                     transition-all duration-200 text-[#52413f] font-nunito font-semibold cursor-pointer"
-          >
-            <option value="es">Español</option>
-            <option value="en">Inglés</option>
-            <option value="fr">Francés</option>
-            <option value="zh">Chino</option>
-          </select>
-          <div className="absolute right-3 top-1/2 -translate-y-1/2 text-[#52413f] pointer-events-none">
-            <ChevronDown size={18} />
-          </div>
-        </div>
+        <CustomSelect
+          options={languages}
+          value={language}
+          onChange={(value) => setLanguage(value)}
+        />
       </div>
 
       {loading && <p>Cargando...</p>}

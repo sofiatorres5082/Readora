@@ -163,13 +163,16 @@ const AuthorsPage = () => {
               key={author.id}
               title={author.name}
               details={[
-                { label: "Año de Nacimiento", value: author.birthYear },
+                {
+                  label: "Año de Nacimiento",
+                  value: author.birthYear || "Desconocido",
+                },
                 {
                   label: "Año de Fallecimiento",
-                  value: author.deathYear || "Presente",
+                  value: author.deathYear || "Desconocido",
                 },
               ]}
-              onDetailsClick={() => handleSelectAuthor(author)} 
+              onDetailsClick={() => handleSelectAuthor(author)}
             />
           ))}
         </div>
