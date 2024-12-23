@@ -92,3 +92,11 @@ Readora/
 </p>
 
 ---
+
+## Funcionalidades Futuras
+
+- **Sistema de usuarios y autenticación**: Los usuarios podrán crear una cuenta, iniciar sesión y acceder a su perfil para gestionar sus libros.
+- **Permitir a los usuarios marcar libros como leídos, favoritos y agregar notas**
+- **Agregar un sistema de paginación**: Implementar un sistema de paginación para mejorar la experiencia al manejar listados largos de libros o autores.
+- **Filtrar por autor y temas**: Agregar filtros más avanzados para buscar libros por autor y tema.
+- **Desafíos de lectura**: Los usuarios podrán establecer metas de lectura y hacer un seguimiento de su progreso.
